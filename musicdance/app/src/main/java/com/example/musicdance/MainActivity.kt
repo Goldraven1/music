@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var mediaPlayer2: MediaPlayer
     private lateinit var seekBar: SeekBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mediaPlayer = MediaPlayer.create(this, R.raw.audio)
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.audio2)
         seekBar = findViewById(R.id.seekBar)
         seekBar.max = mediaPlayer.duration
 
@@ -38,6 +40,13 @@ class MainActivity : AppCompatActivity() {
             if (mediaPlayer.isPlaying) {
                 mediaPlayer.stop()
                 mediaPlayer = MediaPlayer.create(this, R.raw.audio)
+            }
+        }
+
+        val playButton2: Button = findViewById(R.id.next_muscic)
+        playButton2.setOnClickListener {
+            if (!mediaPlayer2.isPlaying) {
+                mediaPlayer2.start()
             }
         }
 
