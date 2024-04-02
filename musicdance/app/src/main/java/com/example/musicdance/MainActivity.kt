@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
 
         val playButton: Button = findViewById(R.id.playButton)
         playButton.setOnClickListener {
+            if (mediaPlayer2.isPlaying) {
+                mediaPlayer2.stop()
+                mediaPlayer2 = MediaPlayer.create(this, R.raw.audio2)
+            }
             if (!mediaPlayer.isPlaying) {
                 mediaPlayer.start()
             }
@@ -45,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         val playButton2: Button = findViewById(R.id.next_muscic)
         playButton2.setOnClickListener {
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.stop()
+                mediaPlayer = MediaPlayer.create(this, R.raw.audio)
+            }
             if (!mediaPlayer2.isPlaying) {
                 mediaPlayer2.start()
             }
